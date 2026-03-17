@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+/* 1. Standard Tailwind Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 2. Smooth Scrolling & Base Styles */
+@layer base {
+  html {
+    /* Makes clicking #work or #contact scroll smoothly instead of jumping */
+    scroll-behavior: smooth;
+  }
+
+  body {
+    /* Prevents content from jumping when scrollbars appear */
+    @apply antialiased;
+  }
+}
+
+/* 3. Custom Glassmorphism (Optional) */
+/* This enhances the navbar if you want a more "Apple-style" blur */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* 4. Selection Highlight */
+::selection {
+  background-color: #d1fae5; /* matches emerald-100 */
+  color: #065f46;            /* matches emerald-800 */
+}

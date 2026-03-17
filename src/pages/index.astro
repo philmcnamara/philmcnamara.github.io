@@ -1,0 +1,145 @@
+---
+// src/pages/index.astro
+const projects = [
+	{
+    title: "AI4D3 NeurIPS 2025",
+    description: "Cross-Species Graph Neural Network for Translating Animal Disease Resistance to Human Drug Targets",
+	image: "/previews/gnn_preview.png",
+    tags: [],
+    link: "/publications/neurips_2025_gnn.pdf"
+  },
+    {
+    title: "Machine Learning for Health 2025",
+    description: "Fauna Brain™: Agents for Accelerated Drug Target Discovery",
+	image: "/previews/agents_preview.png",
+    tags: [],
+    link: "/publications/ml4h_2025_faunabrain.pdf"
+  },
+  {
+    title: "American Heart Association 2025",
+    description: "FB-1083 demonstrates potent efficacy in preclinical models of Heart Failure with Preserved Ejection Fraction and Pulmonary Hypertension",
+	image: "/previews/aha_preview.png",
+    tags: [],
+    link: "https://www.ahajournals.org/doi/abs/10.1161/circ.152.suppl_3.4369301"
+  },
+  {
+    title: "Society for Neuroscience 2024",
+    description: "Foreign body response from implanted cortico-neuro probes in the spiny mouse (Acomys)",
+	image: "/previews/sfn_preview.png",
+    tags: [],
+    link: "/publications/sfn_2024_poster.pdf"
+  },
+  {
+    title: "American Physiological Summit 2023",
+    description: "Translational application of adaptive physiology in non-traditional animal models",
+	image: "/previews/aps_preview.png",
+    tags: [],
+    link: "https://journals.physiology.org/doi/abs/10.1152/physiol.2023.38.S1.5733668"
+  }
+];
+import '../styles/global.css';
+---
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link
+			rel="icon"
+			href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>"
+		/>
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Phil McNamara</title>
+	</head>
+	<body class="bg-slate-50 text-slate-900 font-sans selection:bg-blue-100">
+		
+		<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+			<div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+				<span class="text-xl font-bold tracking-tighter">Phil McNamara</span>
+				<div class="space-x-8 text-sm font-medium text-slate-600">
+					<a href="#about" class="hover:text-blue-600 transition">About</a>
+					<a href="#publications" class="hover:text-blue-600 transition">Publications</a>
+					<a href="#contact" class="hover:text-blue-600 transition">Contact</a>
+					<a href="/Phil_McNamara_CV.pdf" class="px-4 py-2 bg-blue-900 text-white rounded-full hover:bg-slate-700 transition" target="_blank">CV</a>
+				</div>
+			</div>
+		</nav>
+
+		<main class="max-w-5xl mx-auto px-6">
+			
+			<section id="about" class="py-24 md:py-32 grid md:grid-cols-2 gap-12 items-center">
+				<div>
+					<h1 class="text-5xl md:text-5xl font-extrabold tracking-tight mb-6">
+						<span class="text-blue-900">Phil McNamara, M.S.</span>
+					</h1>
+					<p class="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed">
+						I'm passionate about understanding complex systems: from a cell's metabolic pathway to a distributed Nextflow pipeline. My work with nontraditional model organisms has taught me to think deeply about the assumptions and limitations of scientific software tools and to adapt them accordingly. I've learned effective communication from working across fields and with wide-ranging stakeholders including scientists, physicians, software engineers, and patients. I'm excited to continue contributing to technology and science as they work to improve human health.
+					</p>
+					<div class="flex gap-4">
+						<a href="#contact" class="px-8 py-4 bg-blue-900 text-white font-semibold rounded-xl hover:bg-blue-900 hover:-translate-y-1 transition-all shadow-lg shadow-blue-200">
+							Contact Me
+						</a>
+						<a href="#publications" class="px-8 py-4 bg-blue-200 border border-slate-200 font-semibold rounded-xl hover:bg-slate-50 transition-all">
+							Co-authored publications
+						</a>
+					</div>
+				</div>
+				<div class="hidden md:block">
+					<div class="aspect-square bg-blue-50 flex items-center justify-center border-3 border-blue-900 border-solid">
+						<img src="/headshot.png">
+					</div>
+				</div>
+			</section>
+
+			<section id="publications" class="py-20">
+				<h2 class="text-3xl font-bold mb-12">Conference Publications</h2>
+				<div class="grid md:grid-cols-2 gap-8">
+					{projects.map((project) => (
+						<div class="group bg-white p-2 rounded-3xl border border-slate-200 hover:border-blue-200 transition-all hover:shadow-xl">
+							<div class="aspect-video bg-slate-100 rounded-2xl mb-6 overflow-hidden flex items-center justify-center text-slate-400 font-mono text-sm uppercase">
+								<a href={project.link} target="_blank">
+									<img 
+										src={project.image} 
+										alt={project.title} 
+										class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+									/>
+								</a>
+							</div>
+							<div class="px-4 pb-6">
+								<h3 class="text-xl font-bold mb-2 group-hover:text-blue-600 transition">
+									<a href={project.link} target="_blank">{project.title}</a>
+									</h3>
+								<p class="text-slate-500 text-lg mb-1">{project.description}</p>
+								<div class="flex flex-wrap gap-2">
+									{project.tags.map(tag => (
+										<span class="text-[10px] font-bold tracking-widest uppercase px-3 py-1 bg-slate-100 text-slate-600 rounded-full">
+											#{tag}
+										</span>
+									))}
+								</div>
+							</div>
+						</div>
+					))}
+				</div>
+			</section>
+
+		</main>
+		<section id="contact" class="py-20">
+			<footer class="bg-white border-t border-slate-200 py-12 mt-20">
+				<div class="max-w-5xl mx-auto px-6 text-center">
+					<div class="flex justify-center space-x-6 mb-8 text-slate-800">
+						<a href="mailto:phil.j.mcnamara@gmail.com" class="hover:text-slate-900 transition text-2xl">Email</a>
+						<a href="https://www.linkedin.com/in/phil-mcnamara/" class="hover:text-slate-900 transition text-2xl" target="_blank">
+							<i class="fa fa-linkedin-square" style="font-size:24px"> LinkedIn</i>
+						</a>
+						<a href="https://github.com/philmcnamara" class="hover:text-slate-900 transition text-2xl" target="_blank">
+							<i class="fa fa-github" style="font-size:24px"> GitHub</i>
+						</a>
+					</div>
+					<p class="text-slate-500 text-sm">© 2026 Phil McNamara. Built with Astro & Tailwind.</p>
+				</div>
+			</footer>
+		</section>
+
+	</body>
+</html>
